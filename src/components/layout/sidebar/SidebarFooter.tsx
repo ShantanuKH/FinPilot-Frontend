@@ -12,7 +12,7 @@ const SidebarFooter = ({
       className={`
         shrink-0
         border-t
-        border-slate-200
+        border-sidebar-border
         p-3
         transition-all
         duration-300
@@ -22,11 +22,11 @@ const SidebarFooter = ({
       {/* Welcome Message */}
       {!isCollapsed && (
         <div className="px-2 pt-2">
-          <p className="text-sm font-semibold text-slate-900">
+          <p className="text-sm font-semibold text-sidebar-foreground">
             Welcome 👋
           </p>
 
-          <p className="mt-1 text-xs leading-5 text-slate-400">
+          <p className="mt-1 text-xs leading-5 text-muted-foreground">
             Ready to manage your finances?
           </p>
         </div>
@@ -43,11 +43,11 @@ const SidebarFooter = ({
           w-full
           items-center
           rounded-xl
-          text-slate-500
+          text-muted-foreground
           transition-all
           duration-200
-          hover:bg-red-50
-          hover:text-red-600
+          hover:bg-destructive/10
+          hover:text-destructive
 
           ${
             isCollapsed
@@ -82,7 +82,7 @@ const SidebarFooter = ({
               left-[calc(100%+12px)]
               whitespace-nowrap
               rounded-lg
-              bg-slate-900
+              bg-foreground
               px-3
               py-2
               text-xs

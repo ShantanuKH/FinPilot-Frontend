@@ -1,9 +1,6 @@
 import {
   User,
   Activity,
-  Shield,
-  Palette,
-  ChevronRight,
 } from "lucide-react";
 
 const items = [
@@ -16,16 +13,6 @@ const items = [
     id: "financial-health",
     title: "Financial Health",
     icon: Activity,
-  },
-  {
-    id: "security",
-    title: "Security",
-    icon: Shield,
-  },
-  {
-    id: "appearance",
-    title: "Appearance",
-    icon: Palette,
   },
 ];
 
@@ -47,21 +34,21 @@ const SettingsSidebar = () => {
         sticky
         top-8
         h-fit
-        rounded-3xl
+        rounded-2xl
         border
-        border-slate-200
-        bg-white
+        border-border
+        bg-card
         p-6
         shadow-sm
       "
     >
       {/* Header */}
       <div className="mb-8">
-        <h2 className="text-xl font-bold text-slate-900">
+        <h2 className="text-xl font-bold text-foreground">
           Settings
         </h2>
 
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mt-2 text-sm text-muted-foreground">
           Manage your account and preferences.
         </p>
       </div>
@@ -89,7 +76,7 @@ const SettingsSidebar = () => {
                 text-left
                 transition-all
                 duration-200
-                hover:bg-violet-50
+                hover:bg-accent
                 hover:shadow-sm
               "
             >
@@ -97,19 +84,19 @@ const SettingsSidebar = () => {
                 <div
                   className="
                     rounded-xl
-                    bg-slate-100
+                    bg-muted
                     p-2
                     transition
-                    group-hover:bg-violet-100
+                    group-hover:bg-accent
                   "
                 >
                   <Icon
                     size={18}
-                    className="text-slate-600 group-hover:text-violet-600"
+                    className="text-muted-foreground group-hover:text-primary"
                   />
                 </div>
 
-                <span className="font-medium text-slate-700 group-hover:text-violet-700">
+                <span className="font-medium text-foreground group-hover:text-accent-foreground">
                   {item.title}
                 </span>
               </div>

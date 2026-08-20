@@ -25,16 +25,15 @@ const StatCard = ({
         overflow-hidden
         rounded-2xl
         border
-        border-slate-200/80
-        bg-white
+        border-border
+        bg-card
         px-5
         py-5
         shadow-[0_1px_3px_rgba(15,23,42,0.04)]
         transition-all
         duration-300
-        hover:-translate-y-0.5
-        hover:border-slate-300
-        hover:shadow-[0_8px_25px_rgba(15,23,42,0.07)]
+        hover:border-primary/30
+        hover:shadow-md
       "
     >
       {/* Subtle top accent */}
@@ -55,15 +54,15 @@ const StatCard = ({
       <div className="flex items-start justify-between gap-4">
         {/* Content */}
         <div className="min-w-0">
-          <p className="text-[13px] font-medium text-slate-500">
+          <p className="text-[13px] font-medium text-muted-foreground">
             {title}
           </p>
 
-          <h2 className="mt-2 truncate text-[26px] font-bold tracking-tight text-slate-900">
+          <h2 className="mt-2 truncate text-[26px] font-bold tracking-tight text-foreground">
             {value}
           </h2>
 
-          <p className="mt-1 text-xs text-slate-400">
+          <p className="mt-1 text-xs text-muted-foreground">
             {subtitle}
           </p>
         </div>

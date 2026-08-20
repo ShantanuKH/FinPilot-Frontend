@@ -17,7 +17,7 @@ const ChartContainer = ({
       className={clsx(
         "relative w-full min-w-0 overflow-hidden",
         "rounded-2xl",
-        "bg-white",
+        "bg-card",
         height,
         className
       )}

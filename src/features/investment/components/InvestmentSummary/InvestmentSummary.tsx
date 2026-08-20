@@ -34,8 +34,8 @@ const InvestmentSummary = ({ summary }: Props) => {
         maximumFractionDigits: 2,
       })}`,
       icon: BarChart3,
-      iconColor: "text-violet-600",
-      iconBg: "bg-violet-50",
+      iconColor: "text-primary",
+      iconBg: "bg-accent",
     },
     {
       title: "Investments",

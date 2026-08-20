@@ -25,7 +25,7 @@ const ExpenseToolbar = ({
   onSortChange,
 }: ExpenseToolbarProps) => {
   return (
-    <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div className="rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6">
       <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
 
         {/* Left Section */}
@@ -35,7 +35,7 @@ const ExpenseToolbar = ({
           <div className="relative flex-1">
             <Search
               size={18}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
             />
 
             <input
@@ -47,18 +47,18 @@ const ExpenseToolbar = ({
                 w-full
                 rounded-xl
                 border
-                border-slate-200
-                bg-slate-50
+                border-input
+                bg-background
                 py-3
                 pl-11
                 pr-4
                 text-sm
                 outline-none
                 transition
-                focus:border-indigo-500
-                focus:bg-white
+                focus:border-primary
+                focus:bg-card
                 focus:ring-4
-                focus:ring-indigo-100
+                focus:ring-primary/10
               "
             />
           </div>
@@ -74,17 +74,17 @@ const ExpenseToolbar = ({
             className="
               rounded-xl
               border
-              border-slate-200
-              bg-slate-50
+              border-input
+              bg-background
               px-4
               py-3
               text-sm
               outline-none
               transition
-              focus:border-indigo-500
-              focus:bg-white
+              focus:border-primary
+              focus:bg-card
               focus:ring-4
-              focus:ring-indigo-100
+              focus:ring-primary/10
             "
           >
             <option value="">All Categories</option>
@@ -103,7 +103,7 @@ const ExpenseToolbar = ({
           <div className="relative">
             <SlidersHorizontal
               size={18}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"
+              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground"
             />
 
             <select
@@ -112,18 +112,18 @@ const ExpenseToolbar = ({
               className="
                 rounded-xl
                 border
-                border-slate-200
-                bg-slate-50
+                border-input
+                bg-background
                 py-3
                 pl-11
                 pr-4
                 text-sm
                 outline-none
                 transition
-                focus:border-indigo-500
-                focus:bg-white
+                focus:border-primary
+                focus:bg-card
                 focus:ring-4
-                focus:ring-indigo-100
+                focus:ring-primary/10
               "
             >
               <option value="expenseDate,desc">

@@ -36,9 +36,9 @@ const DashboardPage = () => {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <div className="h-8 w-8 animate-spin rounded-full border-2 border-slate-200 border-t-violet-600" />
+          <div className="h-8 w-8 animate-spin rounded-full border-2 border-border border-t-primary" />
 
-          <p className="text-sm font-medium text-slate-500">
+          <p className="text-sm font-medium text-muted-foreground">
             Preparing your financial overview...
           </p>
         </div>
@@ -49,12 +49,12 @@ const DashboardPage = () => {
   if (isError) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <div className="rounded-2xl border border-red-100 bg-red-50 px-6 py-5 text-center">
-          <p className="font-semibold text-red-700">
+        <div className="rounded-[var(--radius)] border border-destructive/20 bg-destructive/10 px-6 py-5 text-center">
+          <p className="font-semibold text-destructive">
             Unable to load your dashboard
           </p>
 
-          <p className="mt-1 text-sm text-red-500">
+          <p className="mt-1 text-sm text-destructive/80">
             Please refresh the page and try again.
           </p>
         </div>
@@ -70,7 +70,7 @@ const DashboardPage = () => {
   ) {
     return (
       <div className="flex min-h-[60vh] items-center justify-center">
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-muted-foreground">
           No dashboard data available.
         </p>
       </div>

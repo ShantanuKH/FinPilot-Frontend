@@ -51,7 +51,7 @@ const ProfileSection = () => {
 
   if (profile.isLoading) {
     return (
-      <p className="text-slate-500">
+      <p className="text-muted-foreground">
         Loading profile...
       </p>
     );
@@ -64,13 +64,13 @@ const ProfileSection = () => {
     >
       {/* First Name */}
       <div>
-        <label className="mb-2 block text-sm font-medium text-slate-700">
+        <label className="mb-2 block text-sm font-medium text-foreground">
           First Name
         </label>
 
         <input
           {...register("firstName")}
-          className="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-violet-500"
+          className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground outline-none focus:border-primary focus:ring-4 focus:ring-primary/10"
         />
 
         {errors.firstName && (
@@ -82,13 +82,13 @@ const ProfileSection = () => {
 
       {/* Last Name */}
       <div>
-        <label className="mb-2 block text-sm font-medium text-slate-700">
+        <label className="mb-2 block text-sm font-medium text-foreground">
           Last Name
         </label>
 
         <input
           {...register("lastName")}
-          className="w-full rounded-xl border border-slate-200 px-4 py-3 outline-none focus:border-violet-500"
+          className="w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground outline-none focus:border-primary focus:ring-4 focus:ring-primary/10"
         />
 
         {errors.lastName && (
@@ -100,7 +100,7 @@ const ProfileSection = () => {
 
       {/* Email */}
       <div>
-        <label className="mb-2 block text-sm font-medium text-slate-700">
+        <label className="mb-2 block text-sm font-medium text-foreground">
           Email
         </label>
 
@@ -109,7 +109,7 @@ const ProfileSection = () => {
             profile.data?.email ?? ""
           }
           readOnly
-          className="w-full cursor-not-allowed rounded-xl border border-slate-200 bg-slate-100 px-4 py-3 text-slate-500"
+          className="w-full cursor-not-allowed rounded-xl border border-input bg-muted px-4 py-3 text-muted-foreground"
         />
       </div>
 
@@ -120,7 +120,7 @@ const ProfileSection = () => {
           disabled={
             updateProfile.isPending
           }
-          className="rounded-xl bg-violet-600 px-6 py-3 font-medium text-white transition hover:bg-violet-700 disabled:opacity-50"
+          className="rounded-xl bg-primary px-6 py-3 font-medium text-primary-foreground transition hover:bg-emerald-700 disabled:opacity-50"
         >
           {updateProfile.isPending
             ? "Saving..."

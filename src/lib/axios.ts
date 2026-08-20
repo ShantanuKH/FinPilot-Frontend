@@ -41,12 +41,38 @@ apiClient.interceptors.response.use(
   (response) => response,
 
   (error) => {
-    if (error.response?.status === 401 && !isSessionExpiredHandled) {
+    const status = error.response?.status;
+    const requestUrl = error.config?.url ?? "";
+
+    // =========================
+    // Authentication APIs
+    // =========================
+    // 401 from login/register means the
+    // authentication request itself failed.
+    //
+    // DO NOT treat it as session expiration.
+
+    const isAuthRequest =
+      requestUrl.includes("/auth/login") ||
+      requestUrl.includes("/auth/register");
+
+    // =========================
+    // Session Expiration
+    // =========================
+
+    if (
+      status === 401 &&
+      !isAuthRequest &&
+      !isSessionExpiredHandled
+    ) {
       isSessionExpiredHandled = true;
 
-      // Mark that the session expired so the login page
-      // can show the notification after the redirect.
-      sessionStorage.setItem("sessionExpired", "true");
+      // Mark session as expired so LoginPage
+      // can show the notification after redirect.
+      sessionStorage.setItem(
+        "sessionExpired",
+        "true"
+      );
 
       // Clear authentication state
       useAuthStore.getState().logout();

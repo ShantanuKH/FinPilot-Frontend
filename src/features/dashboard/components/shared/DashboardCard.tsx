@@ -16,18 +16,17 @@ const DashboardCard = ({
         `
           relative
           overflow-hidden
-          rounded-3xl
+          rounded-[var(--radius)]
           border
-          border-slate-200
-          bg-white
+          border-border
+          bg-card
           p-6
           shadow-sm
           transition-all
           duration-300
           ease-out
-          hover:-translate-y-0.5
-          hover:border-slate-300
-          hover:shadow-lg
+          hover:border-primary/30
+          hover:shadow-md
         `,
         className
       )}

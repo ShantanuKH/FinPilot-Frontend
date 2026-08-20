@@ -6,11 +6,8 @@ const AiHero = () => {
       className="
         relative
         overflow-hidden
-        rounded-3xl
-        bg-gradient-to-r
-        from-indigo-600
-        via-violet-600
-        to-fuchsia-600
+        rounded-2xl
+        bg-emerald-700
         p-8
         text-white
         shadow-lg
@@ -48,7 +45,7 @@ const AiHero = () => {
             w-32
             items-center
             justify-center
-            rounded-full
+            rounded-2xl
             bg-white/20
             backdrop-blur
           "

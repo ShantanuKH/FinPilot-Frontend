@@ -25,8 +25,8 @@ const ChatBubble = ({
               rounded-3xl
               rounded-br-md
               bg-gradient-to-r
-              from-violet-600
-              to-indigo-600
+              from-emerald-600
+              to-emerald-700
               px-5
               py-3
               text-sm
@@ -61,8 +61,8 @@ const ChatBubble = ({
           className="
             rounded-full
             bg-gradient-to-r
-            from-violet-600
-            to-indigo-600
+            from-emerald-600
+            to-emerald-700
             p-2
             text-white
           "

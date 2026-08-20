@@ -24,7 +24,7 @@ const EditExpenseDialog = ({ expense }: Props) => {
           text-slate-500
           transition
           hover:bg-indigo-50
-          hover:text-indigo-600
+          hover:text-primary
         "
       >
         <Pencil size={18} />

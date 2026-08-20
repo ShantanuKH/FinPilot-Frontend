@@ -12,7 +12,7 @@ const Checkbox = forwardRef<
     <CheckboxPrimitive.Root
       ref={ref}
       className={cn(
-        "peer h-5 w-5 shrink-0 rounded border border-slate-300",
+        "peer h-5 w-5 shrink-0 rounded border border-input bg-background",
         "focus-visible:outline-none",
         "focus-visible:ring-2",
         "focus-visible:ring-emerald-500",

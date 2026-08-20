@@ -46,7 +46,7 @@ const ProfileStats = ({
         value={financialHealth.status.replace("_", " ")}
         icon={ShieldCheck}
         iconBgColor="bg-purple-100"
-        iconColor="text-purple-600"
+        iconColor="text-primary"
       />
 
     </section>

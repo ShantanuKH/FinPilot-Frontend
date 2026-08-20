@@ -27,8 +27,8 @@ const Sidebar = ({
         flex
         flex-col
         border-r
-        border-slate-200
-        bg-white
+        border-sidebar-border
+        bg-sidebar
         shadow-sm
         transition-all
         duration-300

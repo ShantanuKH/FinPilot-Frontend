@@ -242,7 +242,7 @@ const FinancialHealth = () => {
           value={`${savingsRate.toFixed(2)}%`}
           icon={TrendingUp}
           iconBgColor="bg-violet-100"
-          iconColor="text-violet-600"
+          iconColor="text-primary"
           description="Percentage of income you're saving"
         />
       </div>

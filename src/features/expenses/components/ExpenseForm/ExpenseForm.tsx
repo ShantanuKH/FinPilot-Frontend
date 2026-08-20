@@ -234,7 +234,7 @@ const ExpenseForm = ({
           disabled={isSubmitting}
           className="
             rounded-xl
-            bg-indigo-600
+            bg-primary
             px-6
             py-3
             font-semibold

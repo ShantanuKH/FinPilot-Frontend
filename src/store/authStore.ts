@@ -12,8 +12,14 @@ export const useAuthStore = create<AuthState>((set) => ({
   token: localStorage.getItem("token"),
   isAuthenticated: !!localStorage.getItem("token"),
 
+  // =========================
+  // Login
+  // =========================
   login: (token) => {
     localStorage.setItem("token", token);
+
+    // Clear any previous session-expired state
+    sessionStorage.removeItem("sessionExpired");
 
     set({
       token,
@@ -21,6 +27,9 @@ export const useAuthStore = create<AuthState>((set) => ({
     });
   },
 
+  // =========================
+  // Logout
+  // =========================
   logout: () => {
     localStorage.removeItem("token");
 

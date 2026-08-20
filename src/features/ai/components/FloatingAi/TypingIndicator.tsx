@@ -7,8 +7,8 @@ const TypingIndicator = () => {
         className="
           rounded-full
           bg-gradient-to-r
-          from-violet-600
-          to-indigo-600
+          from-emerald-600
+          to-emerald-700
           p-2
           text-white
         "
@@ -22,17 +22,17 @@ const TypingIndicator = () => {
         </div>
 
         <div className="flex gap-1">
-          <span className="h-2 w-2 animate-bounce rounded-full bg-violet-500" />
+          <span className="h-2 w-2 animate-bounce rounded-full bg-emerald-500" />
 
           <span
-            className="h-2 w-2 animate-bounce rounded-full bg-violet-500"
+            className="h-2 w-2 animate-bounce rounded-full bg-emerald-500"
             style={{
               animationDelay: "0.15s",
             }}
           />
 
           <span
-            className="h-2 w-2 animate-bounce rounded-full bg-violet-500"
+            className="h-2 w-2 animate-bounce rounded-full bg-emerald-500"
             style={{
               animationDelay: "0.3s",
             }}

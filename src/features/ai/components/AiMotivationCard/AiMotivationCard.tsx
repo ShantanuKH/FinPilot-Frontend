@@ -12,11 +12,8 @@ const AiMotivationCard = ({
       className="
         relative
         overflow-hidden
-        rounded-3xl
-        bg-gradient-to-r
-        from-violet-600
-        via-indigo-600
-        to-blue-600
+        rounded-2xl
+        bg-emerald-700
         p-6
         text-white
         shadow-lg

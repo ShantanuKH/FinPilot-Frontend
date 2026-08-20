@@ -15,20 +15,20 @@ const SettingsSection = ({
     <section
       id={id}
       className="
-        rounded-3xl
+        rounded-2xl
         border
-        border-slate-200
-        bg-white
+        border-border
+        bg-card
         p-8
         shadow-sm
       "
     >
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-slate-900">
+        <h2 className="text-xl font-semibold text-foreground">
           {title}
         </h2>
 
-        <p className="mt-2 text-slate-500">
+        <p className="mt-2 text-sm text-muted-foreground">
           {description}
         </p>
       </div>

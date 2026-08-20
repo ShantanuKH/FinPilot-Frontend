@@ -43,11 +43,11 @@ const ChatInput = ({
           onClick={send}
           className="
             rounded-xl
-            bg-violet-600
+            bg-emerald-600
             p-3
             text-white
             transition
-            hover:bg-violet-700
+            hover:bg-emerald-700
           "
         >
           <SendHorizontal size={18} />

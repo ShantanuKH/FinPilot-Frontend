@@ -98,8 +98,8 @@ const RecommendationCard = ({
               items-center
               justify-center
               rounded-xl
-              bg-violet-50
-              text-violet-600
+              bg-accent
+              text-primary
             "
           >
             <Sparkles size={19} />
@@ -123,12 +123,12 @@ const RecommendationCard = ({
           className="
             shrink-0
             rounded-full
-            bg-violet-50
+            bg-accent
             px-2.5
             py-1
             text-[11px]
             font-medium
-            text-violet-600
+            text-accent-foreground
           "
         >
           AI Insight
@@ -168,11 +168,11 @@ const RecommendationCard = ({
             gap-1.5
             text-sm
             font-semibold
-            text-violet-600
+            text-primary
             transition-all
             duration-200
             hover:gap-2
-            hover:text-violet-700
+            hover:text-emerald-700
           "
         >
           AI Explain

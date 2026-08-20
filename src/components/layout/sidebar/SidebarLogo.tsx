@@ -31,14 +31,14 @@ const SidebarLogo = ({
         shrink-0
         items-center
         border-b
-        border-slate-200
+        border-sidebar-border
         text-left
         transition-all
         duration-200
-        hover:bg-slate-50
+        hover:bg-sidebar-accent
         focus:outline-none
         focus-visible:ring-2
-        focus-visible:ring-violet-500
+        focus-visible:ring-sidebar-ring
         focus-visible:ring-inset
         ${
           isCollapsed
@@ -70,9 +70,7 @@ const SidebarLogo = ({
             items-center
             justify-center
             rounded-xl
-            bg-gradient-to-br
-            from-violet-600
-            to-purple-600
+            bg-primary
             text-white
             shadow-md
             transition-transform
@@ -95,7 +93,7 @@ const SidebarLogo = ({
                 text-lg
                 font-bold
                 tracking-tight
-                text-slate-900
+                text-sidebar-foreground
               "
             >
               FinPilot
@@ -106,7 +104,7 @@ const SidebarLogo = ({
                 truncate
                 text-xs
                 font-medium
-                text-slate-400
+                text-muted-foreground
               "
             >
               Smart Finance
@@ -121,10 +119,10 @@ const SidebarLogo = ({
           size={18}
           className="
             shrink-0
-            text-slate-400
+            text-muted-foreground
             transition-transform
             duration-200
-            group-hover:text-slate-600
+            group-hover:text-sidebar-foreground
           "
         />
       )}

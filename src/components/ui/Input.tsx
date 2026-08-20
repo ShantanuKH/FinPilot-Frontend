@@ -38,7 +38,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="relative w-full">
         {leftIcon && (
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground">
             {leftIcon}
           </div>
         )}
@@ -48,18 +48,18 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           type={inputType}
           disabled={disabled}
           className={cn(
-            "h-11 w-full rounded-lg border bg-white px-3 text-sm text-slate-900 placeholder:text-slate-400",
+            "h-11 w-full rounded-lg border border-input bg-background px-3 text-sm text-foreground placeholder:text-muted-foreground",
             "transition-colors duration-200",
             "focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500",
-            "disabled:cursor-not-allowed disabled:bg-slate-100 disabled:text-slate-400",
+            "disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground",
 
             leftIcon && "pl-10",
 
             (rightIcon || isPassword) && "pr-10",
 
             error
-              ? "border-red-500 focus:ring-red-500 focus:border-red-500"
-              : "border-slate-300",
+              ? "border-destructive focus:ring-destructive focus:border-destructive"
+              : "border-input",
 
             className
           )}
@@ -71,7 +71,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             type="button"
             tabIndex={-1}
             onClick={() => setShowPassword((prev) => !prev)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+            aria-label={showPassword ? "Hide password" : "Show password"}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
           >
             {showPassword ? (
               <EyeOff size={18} />
@@ -81,7 +82,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           </button>
         ) : (
           rightIcon && (
-            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400">
+            <div className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground">
               {rightIcon}
             </div>
           )

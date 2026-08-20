@@ -75,7 +75,7 @@ const AccountSettingsForm = () => {
         <div className="mb-8 flex items-start gap-4">
           <div className="rounded-2xl bg-violet-100 p-3">
             <User
-              className="text-violet-600"
+              className="text-primary"
               size={24}
             />
           </div>
@@ -366,7 +366,7 @@ const AccountSettingsForm = () => {
             items-center
             justify-center
             rounded-2xl
-            bg-violet-600
+            bg-primary
             px-8
             py-3
             text-sm
@@ -377,7 +377,7 @@ const AccountSettingsForm = () => {
             transition-all
             duration-300
             hover:-translate-y-0.5
-            hover:bg-violet-700
+            hover:bg-emerald-700
             hover:shadow-xl
             hover:shadow-violet-300
             disabled:cursor-not-allowed

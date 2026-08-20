@@ -14,11 +14,8 @@ const RecommendationHero = ({
       className="
         relative
         overflow-hidden
-        rounded-3xl
-        bg-gradient-to-r
-        from-violet-600
-        via-indigo-600
-        to-blue-600
+        rounded-2xl
+        bg-emerald-700
         p-8
         text-white
         shadow-lg
@@ -60,10 +57,9 @@ const RecommendationHero = ({
             px-6
             py-3
             font-semibold
-            text-indigo-700
+            text-emerald-800
             transition
-            hover:scale-105
-            hover:shadow-xl
+            hover:bg-emerald-50
             disabled:opacity-60
           "
         >

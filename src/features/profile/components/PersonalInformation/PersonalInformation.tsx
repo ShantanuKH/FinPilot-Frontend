@@ -72,7 +72,7 @@ const PersonalInformation = ({
             <div className="rounded-xl bg-purple-100 p-3">
               <Mail
                 size={20}
-                className="text-purple-600"
+                className="text-primary"
               />
             </div>
 

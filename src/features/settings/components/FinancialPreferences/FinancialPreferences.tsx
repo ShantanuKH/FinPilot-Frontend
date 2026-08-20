@@ -51,7 +51,7 @@ const FinancialPreferences = () => {
 
   if (profile.isLoading) {
     return (
-      <p className="text-slate-500">
+      <p className="text-muted-foreground">
         Loading financial preferences...
       </p>
     );
@@ -68,7 +68,7 @@ const FinancialPreferences = () => {
 
       {/* Monthly Income */}
       <div>
-        <label className="mb-2 block text-sm font-medium text-slate-700">
+        <label className="mb-2 block text-sm font-medium text-foreground">
           Monthly Income
         </label>
 
@@ -81,17 +81,17 @@ const FinancialPreferences = () => {
             w-full
             rounded-xl
             border
-            border-slate-200
-            bg-white
+            border-input
+            bg-background
             px-4
             py-3
-            text-slate-900
+            text-foreground
             outline-none
             transition
-            placeholder:text-slate-400
-            focus:border-violet-500
+            placeholder:text-muted-foreground
+            focus:border-primary
             focus:ring-4
-            focus:ring-violet-500/10
+            focus:ring-primary/10
           "
         />
 
@@ -105,11 +105,11 @@ const FinancialPreferences = () => {
       {/* Risk Profile */}
       <div>
         <div className="mb-4">
-          <label className="block text-sm font-medium text-slate-700">
+          <label className="block text-sm font-medium text-foreground">
             Risk Profile
           </label>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-muted-foreground">
             Choose the level of investment risk you're
             comfortable with.
           </p>
@@ -150,11 +150,11 @@ const FinancialPreferences = () => {
               <Shield size={20} />
             </div>
 
-            <p className="mt-3 font-semibold text-slate-900">
+            <p className="mt-3 font-semibold text-foreground">
               Low Risk
             </p>
 
-            <p className="mt-1 text-xs leading-5 text-slate-500">
+            <p className="mt-1 text-xs leading-5 text-muted-foreground">
               More stability
             </p>
           </button>
@@ -193,11 +193,11 @@ const FinancialPreferences = () => {
               <Scale size={20} />
             </div>
 
-            <p className="mt-3 font-semibold text-slate-900">
+            <p className="mt-3 font-semibold text-foreground">
               Medium Risk
             </p>
 
-            <p className="mt-1 text-xs leading-5 text-slate-500">
+            <p className="mt-1 text-xs leading-5 text-muted-foreground">
               Balanced approach
             </p>
           </button>
@@ -221,26 +221,26 @@ const FinancialPreferences = () => {
               duration-200
               ${
                 selectedRisk === "HIGH"
-                  ? "border-violet-500 bg-violet-50 shadow-sm"
-                  : "border-slate-200 bg-white hover:border-violet-300 hover:bg-slate-50"
+                  ? "border-primary bg-accent shadow-sm"
+                  : "border-border bg-background hover:border-primary/50 hover:bg-muted"
               }
             `}
           >
             {selectedRisk === "HIGH" && (
-              <div className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-violet-600">
+              <div className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-primary">
                 <Check size={12} className="text-white" />
               </div>
             )}
 
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-100 text-violet-600">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-primary">
               <TrendingUp size={20} />
             </div>
 
-            <p className="mt-3 font-semibold text-slate-900">
+            <p className="mt-3 font-semibold text-foreground">
               High Risk
             </p>
 
-            <p className="mt-1 text-xs leading-5 text-slate-500">
+            <p className="mt-1 text-xs leading-5 text-muted-foreground">
               Higher growth potential
             </p>
           </button>
@@ -255,7 +255,7 @@ const FinancialPreferences = () => {
 
       {/* Currency */}
       <div>
-        <label className="mb-2 block text-sm font-medium text-slate-700">
+        <label className="mb-2 block text-sm font-medium text-foreground">
           Currency
         </label>
 
@@ -265,16 +265,16 @@ const FinancialPreferences = () => {
             w-full
             rounded-xl
             border
-            border-slate-200
-            bg-white
+            border-input
+            bg-background
             px-4
             py-3
-            text-slate-900
+            text-foreground
             outline-none
             transition
-            focus:border-violet-500
+            focus:border-primary
             focus:ring-4
-            focus:ring-violet-500/10
+            focus:ring-primary/10
           "
         >
           <option value="INR">INR (₹)</option>
@@ -291,20 +291,20 @@ const FinancialPreferences = () => {
       </div>
 
       {/* Save */}
-      <div className="flex justify-end border-t border-slate-100 pt-6">
+      <div className="flex justify-end border-t border-border pt-6">
         <button
           type="submit"
           disabled={updateProfile.isPending}
           className="
             rounded-xl
-            bg-violet-600
+            bg-primary
             px-6
             py-3
             font-medium
             text-white
             shadow-sm
             transition-all
-            hover:bg-violet-700
+            hover:bg-emerald-700
             hover:shadow-md
             disabled:cursor-not-allowed
             disabled:opacity-50

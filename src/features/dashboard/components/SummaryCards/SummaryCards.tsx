@@ -21,8 +21,8 @@ const SummaryCards = ({ summary }: Props) => {
         value={`₹${summary.totalExpenses.toLocaleString("en-IN")}`}
         subtitle="Spent this month"
         icon={Wallet}
-        iconBgColor="bg-emerald-50"
-        iconColor="text-emerald-600"
+        iconBgColor="bg-accent"
+        iconColor="text-primary"
       />
 
       <StatCard
@@ -39,8 +39,8 @@ const SummaryCards = ({ summary }: Props) => {
         value={`₹${summary.highestExpense.toLocaleString("en-IN")}`}
         subtitle="Largest transaction"
         icon={TrendingUp}
-        iconBgColor="bg-orange-50"
-        iconColor="text-orange-600"
+        iconBgColor="bg-amber-50"
+        iconColor="text-amber-600"
       />
 
       <StatCard
@@ -54,8 +54,8 @@ const SummaryCards = ({ summary }: Props) => {
         )}`}
         subtitle="Average per transaction"
         icon={CreditCard}
-        iconBgColor="bg-violet-50"
-        iconColor="text-violet-600"
+        iconBgColor="bg-sky-50"
+        iconColor="text-sky-600"
       />
     </section>
   );

@@ -89,7 +89,7 @@ const DashboardLayout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-background">
 
       {/* =====================================
           Sidebar
@@ -154,8 +154,8 @@ const DashboardLayout = () => {
             z-30
             h-20
             border-b
-            border-slate-200
-            bg-white/90
+            border-border
+            bg-background/90
             px-4
             backdrop-blur-md
             sm:px-6

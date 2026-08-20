@@ -4,21 +4,21 @@ import type { HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
 
 const cardVariants = cva(
-  "rounded-xl border bg-white text-slate-900 transition-all duration-200",
+  "rounded-[var(--radius)] border bg-card text-card-foreground transition-all duration-200",
   {
     variants: {
       variant: {
-        default: "border-slate-200 shadow-sm",
+        default: "border-border shadow-sm",
 
-        elevated: "border-slate-200 shadow-md",
+        elevated: "border-border shadow-md",
 
-        outline: "border-slate-300",
+        outline: "border-border",
 
-        ghost: "border-transparent bg-slate-50 shadow-none",
+        ghost: "border-transparent bg-muted shadow-none",
       },
 
       hover: {
-        true: "hover:-translate-y-1 hover:shadow-lg",
+        true: "hover:border-primary/40 hover:shadow-md",
 
         false: "",
       },
@@ -87,7 +87,7 @@ const CardDescription = ({
 }: HTMLAttributes<HTMLParagraphElement>) => (
   <p
     className={cn(
-      "text-sm text-slate-500",
+      "text-sm text-muted-foreground",
       className
     )}
     {...props}

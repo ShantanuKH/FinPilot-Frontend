@@ -5,7 +5,6 @@ import {
   TrendingUp,
   Sparkles,
   Bot,
-  User,
   Settings,
 } from "lucide-react";
 

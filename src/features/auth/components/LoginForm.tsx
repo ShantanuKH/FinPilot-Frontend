@@ -6,7 +6,6 @@ import {
   Mail,
   ShieldCheck,
   Sparkles,
-  TrendingUp,
   Wallet,
   PieChart,
 } from "lucide-react";
@@ -77,7 +76,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-slate-50">
+    <div className="min-h-screen w-full bg-background">
       <div className="mx-auto flex min-h-screen max-w-[1500px]">
 
         {/* ================================================= */}

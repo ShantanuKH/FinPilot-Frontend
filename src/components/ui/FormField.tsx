@@ -21,11 +21,11 @@ const FormField = ({
   return (
     <div className={cn("space-y-2", className)}>
       {label && (
-        <label className="block text-sm font-medium text-slate-700">
+        <label className="block text-sm font-medium text-foreground">
           {label}
 
           {required && (
-            <span className="ml-1 text-red-500">*</span>
+            <span className="ml-1 text-destructive">*</span>
           )}
         </label>
       )}
@@ -33,11 +33,11 @@ const FormField = ({
       {children}
 
       {error ? (
-        <p className="text-sm text-red-600">
+        <p className="text-sm text-destructive">
           {error}
         </p>
       ) : helperText ? (
-        <p className="text-sm text-slate-500">
+        <p className="text-sm text-muted-foreground">
           {helperText}
         </p>
       ) : null}

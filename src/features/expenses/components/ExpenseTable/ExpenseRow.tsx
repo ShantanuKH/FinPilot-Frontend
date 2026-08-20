@@ -1,5 +1,3 @@
-import { Pencil, Trash2 } from "lucide-react";
-
 import type { Expense } from "../../types/expense.types";
 import EditExpenseDialog from "../EditExpenseDialog/EditExpenseDialog";
 import DeleteExpenseDialog from "../DeleteExpenseDialog/DeleteExpenseDialog";
@@ -10,7 +8,7 @@ interface Props {
 const categoryStyles: Record<string, string> = {
   FOOD: "bg-orange-100 text-orange-700",
   TRANSPORT: "bg-blue-100 text-blue-700",
-  SHOPPING: "bg-purple-100 text-purple-700",
+  SHOPPING: "bg-sky-50 text-sky-700",
   HEALTH: "bg-red-100 text-red-700",
   BILLS: "bg-amber-100 text-amber-700",
   ENTERTAINMENT: "bg-pink-100 text-pink-700",
@@ -36,11 +34,11 @@ const ExpenseRow = ({ expense }: Props) => {
       {/* Title */}
       <td className="px-6 py-5">
         <div>
-          <p className="font-semibold text-slate-900">
+          <p className="font-semibold text-foreground">
             {expense.title}
           </p>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-muted-foreground">
             {expense.description || "No description"}
           </p>
         </div>
@@ -48,13 +46,13 @@ const ExpenseRow = ({ expense }: Props) => {
 
       {/* Amount */}
       <td className="px-6 py-5 text-right">
-        <span className="text-lg font-bold text-slate-900">
+        <span className="text-lg font-bold text-foreground">
           ₹{expense.amount.toLocaleString("en-IN")}
         </span>
       </td>
 
       {/* Date */}
-      <td className="px-6 py-5 text-slate-600">
+      <td className="px-6 py-5 text-muted-foreground">
         {new Date(expense.expenseDate).toLocaleDateString(
           "en-IN",
           {

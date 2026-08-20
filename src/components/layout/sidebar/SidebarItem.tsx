@@ -39,8 +39,8 @@ const SidebarItem = ({
 
         ${
           isActive
-            ? "bg-violet-600 text-white shadow-md shadow-violet-200"
-            : "text-slate-600 hover:bg-violet-50 hover:text-violet-600"
+            ? "bg-sidebar-primary text-sidebar-primary-foreground shadow-sm"
+            : "text-sidebar-foreground/70 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
         }
         `
       }
@@ -76,7 +76,7 @@ const SidebarItem = ({
             -translate-y-1/2
             whitespace-nowrap
             rounded-lg
-            bg-slate-900
+            bg-foreground
             px-3
             py-2
             text-xs

@@ -13,10 +13,10 @@ const InvestmentHero = ({
         flex
         items-center
         justify-between
-        rounded-3xl
+        rounded-2xl
         border
-        border-slate-200
-        bg-white
+        border-border
+        bg-card
         p-8
         shadow-sm
       "
@@ -26,12 +26,13 @@ const InvestmentHero = ({
           className="
             inline-flex
             rounded-full
-            bg-violet-50
+            border border-primary/20
+            bg-accent
             px-4
             py-2
             text-sm
             font-medium
-            text-violet-600
+            text-accent-foreground
           "
         >
           Investment Management
@@ -42,7 +43,7 @@ const InvestmentHero = ({
             mt-4
             text-4xl
             font-bold
-            text-slate-900
+            text-foreground
           "
         >
           Manage Your Investments
@@ -54,7 +55,7 @@ const InvestmentHero = ({
             max-w-xl
             text-lg
             leading-8
-            text-slate-600
+            text-muted-foreground
           "
         >
           Track your portfolio, monitor performance,
@@ -69,15 +70,15 @@ const InvestmentHero = ({
           flex
           items-center
           gap-2
-          rounded-2xl
-          bg-violet-600
+          rounded-xl
+          bg-primary
           px-6
           py-3
           font-semibold
           text-white
           shadow-sm
           transition-all
-          hover:bg-violet-700
+          hover:bg-emerald-700
         "
       >
         <Plus size={20} />

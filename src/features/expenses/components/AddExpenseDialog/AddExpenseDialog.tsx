@@ -19,7 +19,7 @@ const AddExpenseDialog = () => {
           items-center
           gap-2
           rounded-xl
-          bg-indigo-600
+          bg-primary
           px-6
           py-3
           font-medium

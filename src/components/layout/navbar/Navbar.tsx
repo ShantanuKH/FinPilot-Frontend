@@ -98,11 +98,11 @@ const Navbar = ({
           items-center
           justify-center
           rounded-xl
-          text-slate-600
+          text-muted-foreground
           transition-all
           duration-200
-          hover:bg-slate-100
-          hover:text-slate-900
+          hover:bg-muted
+          hover:text-foreground
           md:hidden
         "
       >
@@ -120,7 +120,7 @@ const Navbar = ({
             text-lg
             font-bold
             tracking-tight
-            text-slate-900
+            text-foreground
             sm:text-xl
           "
         >
@@ -134,7 +134,7 @@ const Navbar = ({
             truncate
             max-w-[420px]
             text-sm
-            text-slate-500
+            text-muted-foreground
             sm:block
           "
         >
@@ -155,7 +155,7 @@ const Navbar = ({
               left-4
               top-1/2
               -translate-y-1/2
-              text-slate-400
+              text-muted-foreground
             "
           />
 
@@ -167,20 +167,20 @@ const Navbar = ({
               w-full
               rounded-2xl
               border
-              border-slate-200
-              bg-slate-50
+              border-border
+              bg-muted
               pl-12
               pr-4
               text-sm
-              text-slate-700
-              placeholder:text-slate-400
+              text-foreground
+              placeholder:text-muted-foreground
               outline-none
               transition-all
               duration-300
-              focus:border-violet-500
-              focus:bg-white
+              focus:border-primary
+              focus:bg-card
               focus:ring-4
-              focus:ring-violet-100
+              focus:ring-primary/20
             "
           />
         </div>
@@ -205,11 +205,11 @@ const Navbar = ({
             justify-center
             rounded-xl
             border
-            border-slate-200
-            bg-white
+            border-border
+            bg-card
             transition-all
             duration-200
-            hover:bg-slate-50
+            hover:bg-muted
             hover:shadow-sm
             sm:h-11
             sm:w-11
@@ -217,7 +217,7 @@ const Navbar = ({
         >
           <Bell
             size={19}
-            className="text-slate-600"
+            className="text-muted-foreground"
           />
         </button>
 
@@ -231,13 +231,13 @@ const Navbar = ({
             gap-3
             rounded-2xl
             border
-            border-slate-200
-            bg-white
+            border-border
+            bg-card
             px-2
             py-1.5
             transition-all
             duration-200
-            hover:bg-slate-50
+            hover:bg-muted
             hover:shadow-sm
             sm:px-3
           "
@@ -252,7 +252,7 @@ const Navbar = ({
               className="
                 text-sm
                 font-semibold
-                text-slate-900
+                text-foreground
               "
             >
               {userName}
@@ -261,7 +261,7 @@ const Navbar = ({
             <p
               className="
                 text-xs
-                text-slate-500
+                text-muted-foreground
               "
             >
               Welcome Back 👋

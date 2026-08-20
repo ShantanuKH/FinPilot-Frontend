@@ -132,9 +132,9 @@ Ask me anything about your finances.`,
           items-center
           justify-between
           bg-gradient-to-r
-          from-indigo-600
-          via-violet-600
-          to-fuchsia-600
+          from-emerald-600
+          via-emerald-600
+          to-emerald-700
           px-6
           py-5
           text-white

@@ -15,12 +15,12 @@ const DashboardSection = ({
     <section className="space-y-4">
       {/* Section Header */}
       <div>
-        <h2 className="text-lg font-semibold tracking-tight text-slate-900">
+        <h2 className="text-lg font-semibold tracking-tight text-foreground">
           {title}
         </h2>
 
         {description && (
-          <p className="mt-1 text-sm leading-5 text-slate-500">
+          <p className="mt-1 text-sm leading-5 text-muted-foreground">
             {description}
           </p>
         )}

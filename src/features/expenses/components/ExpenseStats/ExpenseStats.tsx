@@ -91,7 +91,7 @@ const ExpenseStats = ({ expenses }: Props) => {
 
               <div className="rounded-xl bg-indigo-100 p-3">
                 <Icon
-                  className="text-indigo-600"
+                  className="text-primary"
                   size={24}
                 />
               </div>

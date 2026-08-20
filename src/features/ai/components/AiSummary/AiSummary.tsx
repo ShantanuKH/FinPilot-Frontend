@@ -22,7 +22,7 @@ const AiSummary = ({
         <div className="rounded-2xl bg-violet-100 p-3">
           <FileText
             size={24}
-            className="text-violet-600"
+            className="text-primary"
           />
         </div>
 

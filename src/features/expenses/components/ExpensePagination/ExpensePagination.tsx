@@ -37,7 +37,7 @@ const ExpensePagination = ({
             onClick={() => onPageChange(index)}
             className={`h-10 w-10 rounded-xl text-sm font-semibold transition ${
               page === index
-                ? "bg-indigo-600 text-white"
+                ? "bg-primary text-primary-foreground"
                 : "bg-slate-100 text-slate-700 hover:bg-slate-200"
             }`}
           >

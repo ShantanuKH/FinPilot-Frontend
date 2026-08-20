@@ -37,7 +37,7 @@ const FloatingAiButton = ({
             inset-0
             animate-ping
             rounded-full
-            bg-violet-500/30
+            bg-emerald-500/30
           "
         />
 
@@ -51,16 +51,13 @@ const FloatingAiButton = ({
             items-center
             justify-center
             rounded-full
-            bg-gradient-to-r
-            from-indigo-600
-            via-violet-600
-            to-fuchsia-600
+            bg-emerald-600
             text-white
-            shadow-2xl
+            shadow-lg
             transition-all
             duration-300
             group-hover:rotate-6
-            group-hover:shadow-violet-400/40
+            group-hover:shadow-emerald-400/40
           "
         >
           <Bot size={30} />
