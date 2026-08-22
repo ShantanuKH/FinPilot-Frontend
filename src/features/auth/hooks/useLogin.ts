@@ -18,6 +18,7 @@ export const useLogin = () => {
         {
           firstName: response.firstName,
           lastName: response.lastName,
+          email: response.email,
         }
       );
     },

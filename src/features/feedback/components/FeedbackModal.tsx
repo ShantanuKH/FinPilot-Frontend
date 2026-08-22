@@ -16,7 +16,6 @@ import {
 import { sendFeedback } from "../services/feedback.service";
 
 import type {
-  FeedbackFormData,
   FeedbackType,
 } from "../types/feedback.types";
 

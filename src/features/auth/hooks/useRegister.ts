@@ -18,10 +18,11 @@ export const useRegister = () => {
       // Store JWT + user information
       login(
         response.token,
-        {
-          firstName: response.firstName,
-          lastName: response.lastName,
-        }
+       {
+    firstName: response.firstName,
+        lastName: response.lastName,
+        email: response.email,
+      }
       );
 
       // Directly enter the application
