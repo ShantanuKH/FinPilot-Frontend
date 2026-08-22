@@ -17,7 +17,6 @@ import toast from "react-hot-toast";
 import { AxiosError } from "axios";
 
 import { useLogin } from "../hooks/useLogin";
-import { useAuthStore } from "@/store/authStore";
 
 import {
   loginSchema,
@@ -34,8 +33,6 @@ import {
 const LoginForm = () => {
   const navigate = useNavigate();
 
-  const { login } = useAuthStore();
-
   const loginMutation = useLogin();
 
   const {
@@ -44,6 +41,7 @@ const LoginForm = () => {
     formState: { errors },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
+
     defaultValues: {
       email: "",
       password: "",
@@ -52,16 +50,21 @@ const LoginForm = () => {
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      const response =
-        await loginMutation.mutateAsync(data);
-
-      login(response.token);
+      /*
+       * useLogin handles storing:
+       * - token
+       * - firstName
+       * - lastName
+       *
+       * inside the authentication store.
+       */
+      await loginMutation.mutateAsync(data);
 
       toast.success("Welcome back to FinPilot!");
 
       navigate("/dashboard");
     } catch (error) {
-      console.error(error);
+      console.error("Login error:", error);
 
       const axiosError =
         error as AxiosError<{
@@ -101,6 +104,7 @@ const LoginForm = () => {
           "
         >
           {/* Decorative glow */}
+
           <div
             className="
               pointer-events-none
@@ -130,6 +134,7 @@ const LoginForm = () => {
           />
 
           {/* Brand */}
+
           <div className="relative z-10 flex items-center gap-3">
             <div
               className="
@@ -164,6 +169,7 @@ const LoginForm = () => {
           </div>
 
           {/* Main heading */}
+
           <div className="relative z-10 mt-20 max-w-xl">
             <div
               className="
@@ -197,6 +203,7 @@ const LoginForm = () => {
               "
             >
               All your finances,
+
               <span className="block text-emerald-500">
                 under control.
               </span>
@@ -210,9 +217,9 @@ const LoginForm = () => {
           </div>
 
           {/* Dashboard Preview */}
+
           <div className="relative z-10 mt-14">
 
-            {/* Main graph card */}
             <div
               className="
                 relative
@@ -253,6 +260,7 @@ const LoginForm = () => {
               </div>
 
               {/* Graph */}
+
               <div className="relative mt-5 h-32">
                 <svg
                   viewBox="0 0 500 130"
@@ -317,6 +325,7 @@ const LoginForm = () => {
             </div>
 
             {/* Floating stats */}
+
             <div
               className="
                 absolute
@@ -387,6 +396,7 @@ const LoginForm = () => {
           </div>
 
           {/* Bottom message */}
+
           <div className="relative z-10 mt-auto pt-16">
             <div className="flex gap-4">
               <div className="text-4xl leading-none text-emerald-400">
@@ -427,6 +437,7 @@ const LoginForm = () => {
           <div className="w-full max-w-xl">
 
             {/* Mobile logo */}
+
             <div className="mb-8 text-center lg:hidden">
               <div
                 className="
@@ -459,6 +470,7 @@ const LoginForm = () => {
             </div>
 
             {/* Login Card */}
+
             <div
               className="
                 overflow-hidden
@@ -470,11 +482,13 @@ const LoginForm = () => {
               "
             >
               {/* Accent */}
+
               <div className="h-1.5 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500" />
 
               <div className="p-7 sm:p-10">
 
                 {/* Header */}
+
                 <div className="mb-8">
                   <div
                     className="
@@ -492,6 +506,7 @@ const LoginForm = () => {
                     "
                   >
                     <Sparkles size={13} />
+
                     SECURE ACCESS
                   </div>
 
@@ -513,11 +528,14 @@ const LoginForm = () => {
                 </div>
 
                 {/* Form */}
+
                 <form
                   onSubmit={handleSubmit(onSubmit)}
                   className="space-y-5"
                 >
+
                   {/* Email */}
+
                   <FormField
                     label="Email"
                     required
@@ -533,6 +551,7 @@ const LoginForm = () => {
                   </FormField>
 
                   {/* Password */}
+
                   <FormField
                     label="Password"
                     required
@@ -548,6 +567,7 @@ const LoginForm = () => {
                   </FormField>
 
                   {/* Options */}
+
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2.5">
                       <Checkbox id="remember" />
@@ -575,6 +595,7 @@ const LoginForm = () => {
                   </div>
 
                   {/* Submit */}
+
                   <Button
                     type="submit"
                     fullWidth
@@ -608,6 +629,7 @@ const LoginForm = () => {
                 </form>
 
                 {/* Security */}
+
                 <div
                   className="
                     mt-6
@@ -655,9 +677,11 @@ const LoginForm = () => {
                 </div>
 
                 {/* Register */}
+
                 <div className="mt-7 text-center">
                   <p className="text-sm text-slate-500">
                     Don't have an account?{" "}
+
                     <Link
                       to="/register"
                       className="
@@ -670,14 +694,17 @@ const LoginForm = () => {
                     </Link>
                   </p>
                 </div>
+
               </div>
             </div>
 
             {/* Footer */}
+
             <p className="mt-6 text-center text-xs text-slate-400">
               © {new Date().getFullYear()} FinPilot ·
               Personal finance, simplified.
             </p>
+
           </div>
         </div>
       </div>

@@ -9,6 +9,7 @@ interface SidebarProps {
   isMobileOpen: boolean;
   onToggle: () => void;
   onNavigate: () => void;
+  onFeedback: () => void;
 }
 
 const Sidebar = ({
@@ -16,6 +17,7 @@ const Sidebar = ({
   isMobileOpen,
   onToggle,
   onNavigate,
+  onFeedback,
 }: SidebarProps) => {
   return (
     <aside
@@ -51,18 +53,10 @@ const Sidebar = ({
         }
       `}
     >
-      {/* =================================
-          Logo / Sidebar Toggle
-          ================================= */}
-
       <SidebarLogo
         isCollapsed={isCollapsed}
         onToggle={onToggle}
       />
-
-      {/* =================================
-          Navigation
-          ================================= */}
 
       <nav
         className={`
@@ -88,12 +82,9 @@ const Sidebar = ({
         </div>
       </nav>
 
-      {/* =================================
-          Sidebar Footer
-          ================================= */}
-
       <SidebarFooter
         isCollapsed={isCollapsed}
+        onFeedback={onFeedback}
       />
     </aside>
   );

@@ -2,9 +2,13 @@ import {
   Bell,
   Menu,
   Search,
-  UserCircle2,
 } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import {
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+
+import { useCurrentUser } from "@/features/auth/hooks/useCurrentUser";
 
 interface NavbarProps {
   onMenuClick: () => void;
@@ -42,13 +46,13 @@ const PAGE_INFO: Record<
   },
 
   "/recommendations": {
-    title: "✨ Smart Recommendations",
+    title: "Smart Recommendations",
     subtitle:
       "Personalized financial insights generated from your expenses, budgets and investments.",
   },
 
   "/ai": {
-    title: "🤖 FinPilot AI",
+    title: "FinPilot AI",
     subtitle:
       "Ask financial questions and receive personalized AI-powered guidance.",
   },
@@ -70,14 +74,46 @@ const Navbar = ({
   onMenuClick,
 }: NavbarProps) => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const page =
     PAGE_INFO[pathname] ??
     PAGE_INFO["/dashboard"];
 
-  // TODO:
-  // Replace with authenticated user later
-  const userName = "Shantanu";
+  // =====================================
+  // Current User
+  // =====================================
+
+  const user = useCurrentUser();
+
+  const userName = [
+    user?.firstName,
+    user?.lastName,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const userEmail =
+    user?.email || "Unknown";
+
+  const userFirstName =
+    user?.firstName || "User";
+
+  const userInitials = [
+    user?.firstName?.charAt(0),
+    user?.lastName?.charAt(0),
+  ]
+    .filter(Boolean)
+    .join("")
+    .toUpperCase();
+
+  // =====================================
+  // Profile Navigation
+  // =====================================
+
+  const handleProfileClick = () => {
+    navigate("/settings");
+  };
 
   return (
     <div className="flex h-full items-center gap-4">
@@ -99,14 +135,26 @@ const Navbar = ({
           justify-center
           rounded-xl
           text-muted-foreground
+
           transition-all
-          duration-200
+          duration-300
+          ease-out
+
           hover:bg-muted
           hover:text-foreground
+
           md:hidden
         "
       >
-        <Menu size={22} />
+        <Menu
+          size={22}
+          className="
+            transition-transform
+            duration-300
+            ease-out
+            group-hover:scale-105
+          "
+        />
       </button>
 
       {/* =====================================
@@ -131,8 +179,8 @@ const Navbar = ({
           className="
             mt-1
             hidden
-            truncate
             max-w-[420px]
+            truncate
             text-sm
             text-muted-foreground
             sm:block
@@ -175,8 +223,11 @@ const Navbar = ({
               text-foreground
               placeholder:text-muted-foreground
               outline-none
+
               transition-all
               duration-300
+              ease-out
+
               focus:border-primary
               focus:bg-card
               focus:ring-4
@@ -190,84 +241,380 @@ const Navbar = ({
           Right Actions
           ===================================== */}
 
-      <div className="ml-auto flex items-center gap-2 sm:gap-3">
+      <div className="ml-auto flex items-center gap-3 sm:gap-4">
 
-        {/* Notifications */}
+        {/* ===================================
+            Notifications
+            =================================== */}
 
-        <button
-          type="button"
-          aria-label="Notifications"
-          className="
-            flex
-            h-10
-            w-10
-            items-center
-            justify-center
-            rounded-xl
-            border
-            border-border
-            bg-card
-            transition-all
-            duration-200
-            hover:bg-muted
-            hover:shadow-sm
-            sm:h-11
-            sm:w-11
-          "
-        >
-          <Bell
-            size={19}
-            className="text-muted-foreground"
-          />
-        </button>
+        <div className="group relative">
 
-        {/* User */}
+          <button
+            type="button"
+            aria-label="Notifications"
+            className="
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              rounded-xl
+              border
+              border-border
+              bg-card
 
-        <button
-          type="button"
-          className="
-            flex
-            items-center
-            gap-3
-            rounded-2xl
-            border
-            border-border
-            bg-card
-            px-2
-            py-1.5
-            transition-all
-            duration-200
-            hover:bg-muted
-            hover:shadow-sm
-            sm:px-3
-          "
-        >
-          <UserCircle2
-            size={32}
-            className="text-slate-600"
-          />
+              transition-all
+              duration-300
+              ease-out
 
-          <div className="hidden text-left lg:block">
+              hover:-translate-y-0.5
+              hover:bg-muted
+              hover:shadow-sm
+
+              sm:h-11
+              sm:w-11
+            "
+          >
+            <Bell
+              size={19}
+              className="
+                text-muted-foreground
+
+                transition-all
+                duration-300
+                ease-out
+
+                group-hover:scale-105
+                group-hover:text-primary
+              "
+            />
+          </button>
+
+          {/* Notification Tooltip */}
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              right-0
+              top-[calc(100%+12px)]
+              z-50
+
+              whitespace-nowrap
+
+              rounded-xl
+              border
+              border-border
+              bg-card
+              px-4
+              py-2.5
+
+              translate-y-2
+              scale-95
+              opacity-0
+
+              shadow-lg
+
+              transition-all
+              duration-300
+              ease-out
+
+              group-hover:translate-y-0
+              group-hover:scale-100
+              group-hover:opacity-100
+            "
+          >
             <p
               className="
-                text-sm
+                text-xs
                 font-semibold
                 text-foreground
               "
             >
-              {userName}
+              Notifications
             </p>
 
             <p
               className="
+                mt-0.5
                 text-xs
                 text-muted-foreground
               "
             >
-              Welcome Back 👋
+              Coming soon
             </p>
           </div>
-        </button>
+        </div>
+
+        {/* ===================================
+            User Profile
+            =================================== */}
+
+        <div className="group relative">
+
+          {/* Profile Button */}
+
+          <button
+            type="button"
+            onClick={handleProfileClick}
+            aria-label="Open settings"
+            className="
+              flex
+              items-center
+              gap-3
+              rounded-2xl
+              border
+              border-border
+              bg-card
+              px-2
+              py-1.5
+
+              transition-all
+              duration-300
+              ease-out
+
+              hover:-translate-y-0.5
+              hover:bg-muted
+              hover:shadow-sm
+
+              sm:px-3
+            "
+          >
+            {/* User Initials */}
+
+            <div
+              className="
+                flex
+                h-8
+                w-8
+                shrink-0
+                items-center
+                justify-center
+                rounded-full
+                bg-primary/10
+                text-xs
+                font-semibold
+                text-primary
+
+                transition-all
+                duration-300
+                ease-out
+
+                group-hover:scale-105
+                group-hover:bg-primary/15
+
+                sm:h-8
+                sm:w-8
+              "
+            >
+              {userInitials || "U"}
+            </div>
+
+            {/* User Name */}
+
+            <div className="hidden text-left lg:block">
+
+              <p
+                className="
+                  text-xs
+                  text-muted-foreground
+                "
+              >
+                Welcome Back
+              </p>
+
+              <p
+                className="
+                  max-w-[120px]
+                  truncate
+                  text-sm
+                  font-semibold
+                  text-foreground
+                "
+              >
+                {userFirstName}
+              </p>
+
+            </div>
+          </button>
+
+          {/* =================================
+              User Information Popup
+              ================================= */}
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              right-0
+              top-[calc(100%+12px)]
+              z-50
+              w-72
+
+              translate-y-2
+              scale-[0.97]
+              opacity-0
+
+              rounded-2xl
+              border
+              border-border
+              bg-card
+              p-4
+              shadow-xl
+
+              transition-all
+              duration-300
+              ease-out
+
+              group-hover:pointer-events-auto
+              group-hover:translate-y-0
+              group-hover:scale-100
+              group-hover:opacity-100
+            "
+          >
+
+            {/* Profile Header */}
+
+            <div className="flex items-center gap-3">
+
+              {/* Initials */}
+
+              <div
+                className="
+                  flex
+                  h-11
+                  w-11
+                  shrink-0
+                  items-center
+                  justify-center
+                  rounded-full
+                  bg-primary/10
+                  text-sm
+                  font-bold
+                  text-primary
+
+                  transition-all
+                  duration-300
+                  ease-out
+
+                  group-hover:bg-primary/15
+                "
+              >
+                {userInitials || "U"}
+              </div>
+
+              {/* Name + Email */}
+
+              <div className="min-w-0">
+
+                <p
+                  className="
+                    truncate
+                    text-sm
+                    font-semibold
+                    text-foreground
+                  "
+                >
+                  {userName || "User"}
+                </p>
+
+                <p
+                  className="
+                    mt-0.5
+                    truncate
+                    text-xs
+                    text-muted-foreground
+                  "
+                >
+                  {userEmail}
+                </p>
+
+              </div>
+            </div>
+
+            {/* Divider */}
+
+            <div className="my-3 border-t border-border" />
+
+            {/* Account Information */}
+
+            <div className="space-y-2">
+
+              <div className="flex items-center justify-between gap-4">
+
+                <span
+                  className="
+                    text-xs
+                    text-muted-foreground
+                  "
+                >
+                  Account
+                </span>
+
+                <span
+                  className="
+                    text-xs
+                    font-medium
+                    text-foreground
+                  "
+                >
+                  Active
+                </span>
+
+              </div>
+
+              <div className="flex items-center justify-between gap-4">
+
+                <span
+                  className="
+                    text-xs
+                    text-muted-foreground
+                  "
+                >
+                  Profile
+                </span>
+
+                <span
+                  className="
+                    text-xs
+                    font-medium
+                    text-primary
+                  "
+                >
+                  FinPilot User
+                </span>
+
+              </div>
+
+            </div>
+
+            {/* Bottom Message */}
+
+            <div
+              className="
+                mt-3
+                rounded-xl
+                bg-muted
+                px-3
+                py-2.5
+              "
+            >
+              <p
+                className="
+                  text-xs
+                  leading-5
+                  text-muted-foreground
+                "
+              >
+                Manage your personal information
+                and financial preferences from your
+                profile.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
   );

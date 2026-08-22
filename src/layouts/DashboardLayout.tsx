@@ -1,4 +1,8 @@
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+} from "react";
+
 import { Outlet } from "react-router-dom";
 
 import Sidebar from "@/components/layout/sidebar/Sidebar";
@@ -6,14 +10,21 @@ import Navbar from "@/components/layout/navbar/Navbar";
 
 import FloatingAi from "@/features/ai/components/FloatingAi/FloatingAi";
 
+import FeedbackModal from "@/features/feedback/components/FeedbackModal";
+
+import { useCurrentUser } from "@/features/auth/hooks/useCurrentUser";
+
 const DashboardLayout = () => {
-  // Desktop sidebar state
   const [isSidebarCollapsed, setIsSidebarCollapsed] =
     useState(false);
 
-  // Mobile sidebar state
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] =
     useState(false);
+
+  const [isFeedbackOpen, setIsFeedbackOpen] =
+    useState(false);
+
+  const user = useCurrentUser();
 
   /**
    * Close mobile sidebar when pressing Escape.
@@ -45,8 +56,12 @@ const DashboardLayout = () => {
    * while mobile sidebar is open.
    */
   useEffect(() => {
-    if (isMobileSidebarOpen) {
-      document.body.style.overflow = "hidden";
+    if (
+      isMobileSidebarOpen ||
+      isFeedbackOpen
+    ) {
+      document.body.style.overflow =
+        "hidden";
     } else {
       document.body.style.overflow = "";
     }
@@ -54,39 +69,51 @@ const DashboardLayout = () => {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isMobileSidebarOpen]);
+  }, [
+    isMobileSidebarOpen,
+    isFeedbackOpen,
+  ]);
 
-  /**
-   * Toggle desktop sidebar.
-   *
-   * This is triggered from the
-   * FinPilot logo/header inside Sidebar.
-   */
   const handleDesktopSidebarToggle = () => {
     setIsSidebarCollapsed(
       (previous) => !previous
     );
   };
 
-  /**
-   * Toggle mobile sidebar.
-   *
-   * This is triggered from the
-   * hamburger button inside Navbar.
-   */
   const handleMobileSidebarToggle = () => {
     setIsMobileSidebarOpen(
       (previous) => !previous
     );
   };
 
-  /**
-   * Close mobile sidebar after
-   * navigating to another page.
-   */
   const handleMobileNavigation = () => {
     setIsMobileSidebarOpen(false);
   };
+
+  const handleOpenFeedback = () => {
+    setIsMobileSidebarOpen(false);
+    setIsFeedbackOpen(true);
+  };
+
+  const handleCloseFeedback = () => {
+    setIsFeedbackOpen(false);
+  };
+
+  const userName = [
+    user?.firstName,
+    user?.lastName,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const userEmail =
+    "email" in (user ?? {})
+      ? (
+          user as {
+            email?: string;
+          }
+        ).email ?? ""
+      : "";
 
   return (
     <div className="min-h-screen bg-background">
@@ -98,8 +125,15 @@ const DashboardLayout = () => {
       <Sidebar
         isCollapsed={isSidebarCollapsed}
         isMobileOpen={isMobileSidebarOpen}
-        onToggle={handleDesktopSidebarToggle}
-        onNavigate={handleMobileNavigation}
+        onToggle={
+          handleDesktopSidebarToggle
+        }
+        onNavigate={
+          handleMobileNavigation
+        }
+        onFeedback={
+          handleOpenFeedback
+        }
       />
 
       {/* =====================================
@@ -192,6 +226,19 @@ const DashboardLayout = () => {
           ===================================== */}
 
       <FloatingAi />
+
+      {/* =====================================
+          Feedback Modal
+          ===================================== */}
+
+      <FeedbackModal
+        isOpen={isFeedbackOpen}
+        onClose={
+          handleCloseFeedback
+        }
+        userName={userName}
+        userEmail={userEmail}
+      />
 
     </div>
   );

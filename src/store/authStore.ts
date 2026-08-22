@@ -1,41 +1,92 @@
 import { create } from "zustand";
 
+interface User {
+  firstName: string;
+  lastName: string;
+}
+
 interface AuthState {
   token: string | null;
+  user: User | null;
   isAuthenticated: boolean;
 
-  login: (token: string) => void;
+  login: (
+    token: string,
+    user: User
+  ) => void;
+
   logout: () => void;
 }
 
-export const useAuthStore = create<AuthState>((set) => ({
-  token: localStorage.getItem("token"),
-  isAuthenticated: !!localStorage.getItem("token"),
+export const useAuthStore =
+  create<AuthState>((set) => ({
 
-  // =========================
-  // Login
-  // =========================
-  login: (token) => {
-    localStorage.setItem("token", token);
+    token: localStorage.getItem("token"),
 
-    // Clear any previous session-expired state
-    sessionStorage.removeItem("sessionExpired");
+    user: (() => {
+      const storedUser =
+        localStorage.getItem("user");
 
-    set({
-      token,
-      isAuthenticated: true,
-    });
-  },
+      if (!storedUser) {
+        return null;
+      }
 
-  // =========================
-  // Logout
-  // =========================
-  logout: () => {
-    localStorage.removeItem("token");
+      try {
+        return JSON.parse(storedUser);
+      } catch {
+        return null;
+      }
+    })(),
 
-    set({
-      token: null,
-      isAuthenticated: false,
-    });
-  },
-}));
+    isAuthenticated:
+      !!localStorage.getItem("token"),
+
+    // =====================================
+    // Login / Registration
+    // =====================================
+
+    login: (token, user) => {
+
+      localStorage.setItem(
+        "token",
+        token
+      );
+
+      localStorage.setItem(
+        "user",
+        JSON.stringify(user)
+      );
+
+      // Clear previous session-expired state
+      sessionStorage.removeItem(
+        "sessionExpired"
+      );
+
+      set({
+        token,
+        user,
+        isAuthenticated: true,
+      });
+    },
+
+    // =====================================
+    // Logout
+    // =====================================
+
+    logout: () => {
+
+      localStorage.removeItem(
+        "token"
+      );
+
+      localStorage.removeItem(
+        "user"
+      );
+
+      set({
+        token: null,
+        user: null,
+        isAuthenticated: false,
+      });
+    },
+  }));

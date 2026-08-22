@@ -62,7 +62,7 @@ const RegisterForm = () => {
         "Account created successfully!"
       );
 
-      navigate("/login");
+      navigate("/dashboard");
     } catch (error) {
       console.error(error);
 

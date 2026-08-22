@@ -1,4 +1,4 @@
-import {ChevronLeft, Sparkles } from "lucide-react";
+import {ChevronLeft } from "lucide-react";
 
 interface SidebarLogoProps {
   isCollapsed: boolean;
@@ -61,28 +61,34 @@ const SidebarLogo = ({
         `}
       >
         {/* Logo */}
-        <div
-          className="
-            flex
-            h-10
-            w-10
-            shrink-0
-            items-center
-            justify-center
-            rounded-xl
-            bg-primary
-            text-white
-            shadow-md
-            transition-transform
-            duration-200
-            group-hover:scale-105
-          "
-        >
-          <Sparkles
-            size={21}
-            strokeWidth={2.2}
-          />
-        </div>
+        {/* Logo */}
+<div
+  className="
+    flex
+    h-10
+    w-10
+    shrink-0
+    items-center
+    justify-center
+  "
+>
+  <img
+    src="/FinPilot_Favicon.png"
+    alt="FinPilot"
+    className="
+      h-10
+      w-10
+      shrink-0
+      rounded-xl
+      object-cover
+      shadow-md
+      transition-all
+      duration-300
+      ease-out
+      group-hover:scale-105
+    "
+  />
+</div>
 
         {/* Brand Text */}
         {!isCollapsed && (

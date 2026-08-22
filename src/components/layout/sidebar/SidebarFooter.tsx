@@ -1,12 +1,39 @@
-import { LogOut } from "lucide-react";
+import {
+  LogOut,
+  MessageSquare,
+} from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+import { useAuthStore } from "@/store/authStore";
 
 interface SidebarFooterProps {
   isCollapsed: boolean;
+  onFeedback: () => void;
 }
 
 const SidebarFooter = ({
   isCollapsed,
+  onFeedback,
 }: SidebarFooterProps) => {
+  const navigate = useNavigate();
+
+  const logout = useAuthStore(
+    (state) => state.logout
+  );
+
+  const handleLogout = () => {
+    // Clear authentication state
+    logout();
+
+    // Remove stored user information
+    localStorage.removeItem("user");
+
+    // Redirect to login page
+    navigate("/login", {
+      replace: true,
+    });
+  };
+
   return (
     <div
       className={`
@@ -32,13 +59,100 @@ const SidebarFooter = ({
         </div>
       )}
 
+      {/* Feedback */}
+      <button
+        type="button"
+        onClick={onFeedback}
+        title={
+          isCollapsed
+            ? "Help us improve"
+            : undefined
+        }
+        className={`
+          group
+          relative
+          mt-3
+          flex
+          w-full
+          items-center
+          rounded-xl
+          text-muted-foreground
+          transition-all
+          duration-200
+          hover:bg-primary/10
+          hover:text-primary
+
+          ${
+            isCollapsed
+              ? "justify-center px-0 py-3"
+              : "gap-3 px-3 py-3"
+          }
+        `}
+      >
+        <MessageSquare
+          size={20}
+          strokeWidth={2}
+          className="
+            shrink-0
+            transition-transform
+            duration-200
+            group-hover:-translate-y-0.5
+          "
+        />
+
+        {!isCollapsed && (
+          <div className="text-left">
+            <p className="font-medium">
+              Help us improve
+            </p>
+
+            <p className="text-xs text-muted-foreground">
+              Share your feedback
+            </p>
+          </div>
+        )}
+
+        {/* Collapsed Tooltip */}
+        {isCollapsed && (
+          <span
+            className="
+              pointer-events-none
+              absolute
+              left-[calc(100%+12px)]
+              whitespace-nowrap
+              rounded-lg
+              bg-foreground
+              px-3
+              py-2
+              text-xs
+              font-medium
+              text-white
+              opacity-0
+              shadow-lg
+              transition-all
+              duration-200
+              group-hover:translate-x-1
+              group-hover:opacity-100
+            "
+          >
+            Help us improve
+          </span>
+        )}
+      </button>
+
       {/* Logout */}
       <button
         type="button"
-        title={isCollapsed ? "Logout" : undefined}
+        onClick={handleLogout}
+        title={
+          isCollapsed
+            ? "Logout"
+            : undefined
+        }
         className={`
           group
-          mt-3
+          relative
+          mt-1
           flex
           w-full
           items-center

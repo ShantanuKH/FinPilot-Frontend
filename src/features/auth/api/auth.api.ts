@@ -7,9 +7,11 @@ import type {
 } from "../types/auth";
 
 export const authApi = {
+
   login: async (
     data: LoginRequest
   ): Promise<AuthResponse> => {
+
     const response =
       await apiClient.post<AuthResponse>(
         "/auth/login",
@@ -21,9 +23,10 @@ export const authApi = {
 
   register: async (
     data: RegisterRequest
-  ) => {
+  ): Promise<AuthResponse> => {
+
     const response =
-      await apiClient.post(
+      await apiClient.post<AuthResponse>(
         "/auth/register",
         data
       );
