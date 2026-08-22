@@ -1,6 +1,6 @@
 export type RiskProfile =
   | "LOW"
-  | "MEDIUM"
+  | "MODERATE"
   | "HIGH";
 
 export interface UserProfile {

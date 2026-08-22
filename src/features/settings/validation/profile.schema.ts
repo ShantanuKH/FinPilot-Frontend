@@ -13,11 +13,11 @@ export const profileSchema = z.object({
   .number()
   .positive("Monthly income must be greater than 0"),
 
-  riskProfile: z.enum([
-    "LOW",
-    "MEDIUM",
-    "HIGH",
-  ]),
+ riskProfile: z.enum([
+  "LOW",
+  "MODERATE",
+  "HIGH",
+]),
 
   currency: z
     .string()

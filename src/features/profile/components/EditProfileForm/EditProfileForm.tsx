@@ -114,7 +114,7 @@ const EditProfileForm = ({
           "
         >
           <option value="LOW">Low</option>
-          <option value="MEDIUM">Medium</option>
+          <option value="MODERATE">Medium</option>
           <option value="HIGH">High</option>
         </select>
 

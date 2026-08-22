@@ -63,8 +63,15 @@ const FinancialPreferences = () => {
       className="space-y-8"
     >
       {/* Hidden fields */}
-      <input type="hidden" {...register("firstName")} />
-      <input type="hidden" {...register("lastName")} />
+      <input
+        type="hidden"
+        {...register("firstName")}
+      />
+
+      <input
+        type="hidden"
+        {...register("lastName")}
+      />
 
       {/* Monthly Income */}
       <div>
@@ -116,7 +123,10 @@ const FinancialPreferences = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-          {/* Low Risk */}
+
+          {/* =========================================
+              Low Risk
+              ========================================= */}
           <button
             type="button"
             onClick={() =>
@@ -142,7 +152,10 @@ const FinancialPreferences = () => {
           >
             {selectedRisk === "LOW" && (
               <div className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-emerald-600">
-                <Check size={12} className="text-white" />
+                <Check
+                  size={12}
+                  className="text-white"
+                />
               </div>
             )}
 
@@ -159,11 +172,13 @@ const FinancialPreferences = () => {
             </p>
           </button>
 
-          {/* Medium Risk */}
+          {/* =========================================
+              Moderate Risk
+              ========================================= */}
           <button
             type="button"
             onClick={() =>
-              setValue("riskProfile", "MEDIUM", {
+              setValue("riskProfile", "MODERATE", {
                 shouldValidate: true,
                 shouldDirty: true,
               })
@@ -177,15 +192,18 @@ const FinancialPreferences = () => {
               transition-all
               duration-200
               ${
-                selectedRisk === "MEDIUM"
+                selectedRisk === "MODERATE"
                   ? "border-blue-500 bg-blue-50 shadow-sm"
                   : "border-slate-200 bg-white hover:border-blue-300 hover:bg-slate-50"
               }
             `}
           >
-            {selectedRisk === "MEDIUM" && (
+            {selectedRisk === "MODERATE" && (
               <div className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600">
-                <Check size={12} className="text-white" />
+                <Check
+                  size={12}
+                  className="text-white"
+                />
               </div>
             )}
 
@@ -194,7 +212,7 @@ const FinancialPreferences = () => {
             </div>
 
             <p className="mt-3 font-semibold text-foreground">
-              Medium Risk
+              Moderate Risk
             </p>
 
             <p className="mt-1 text-xs leading-5 text-muted-foreground">
@@ -202,7 +220,9 @@ const FinancialPreferences = () => {
             </p>
           </button>
 
-          {/* High Risk */}
+          {/* =========================================
+              High Risk
+              ========================================= */}
           <button
             type="button"
             onClick={() =>
@@ -228,7 +248,10 @@ const FinancialPreferences = () => {
           >
             {selectedRisk === "HIGH" && (
               <div className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-primary">
-                <Check size={12} className="text-white" />
+                <Check
+                  size={12}
+                  className="text-white"
+                />
               </div>
             )}
 
@@ -277,10 +300,21 @@ const FinancialPreferences = () => {
             focus:ring-primary/10
           "
         >
-          <option value="INR">INR (₹)</option>
-          <option value="USD">USD ($)</option>
-          <option value="EUR">EUR (€)</option>
-          <option value="GBP">GBP (£)</option>
+          <option value="INR">
+            INR (₹)
+          </option>
+
+          <option value="USD">
+            USD ($)
+          </option>
+
+          <option value="EUR">
+            EUR (€)
+          </option>
+
+          <option value="GBP">
+            GBP (£)
+          </option>
         </select>
 
         {errors.currency && (
